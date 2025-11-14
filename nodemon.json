@@ -1,0 +1,8 @@
+{
+    "watch": [
+        "index.js",
+        "prod/index.js"
+    ],
+    "ext": "js",
+    "exec": "node index.js"
+}

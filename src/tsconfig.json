@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": false,
+    "sourceMap": false,
+    "downlevelIteration": false,
+    "outFile": "../prod/index.js",
+    "module": "AMD",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/*"
+      ]
+    }
+  },
+  "files": [
+    "libraries.ts",
+    "core.ts",
+    "filesManager.ts",
+    "utils/jwtToken.ts",
+    "utils/timeToken.ts",
+    "utils/getUserId.ts",
+    "utils/idGenerator.ts",
+    "basic/secure.ts",
+    "basic/secureTest.ts",
+    "config/getConfig.ts",
+    "user/checkUser.ts",
+    "user/setUser.ts",
+    "swaggerConfig.ts",
+    "swagger.ts",
+    "app.ts",
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents",
+    "fallbackPolling": "dynamicPriority",
+    "synchronousWatchDirectory": true,
+    "excludeDirectories": [
+      "**/node_modules",
+      "bin"
+    ],
+    "excludeFiles": [
+      "build/fileWhichChangesOften.ts"
+    ]
+  }
+}

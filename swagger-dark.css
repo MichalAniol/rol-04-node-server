@@ -1,0 +1,44 @@
+body {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+.swagger-ui .topbar {
+    background-color: #1f1f1f !important;
+}
+
+.swagger-ui .scheme-container,
+.swagger-ui .opblock {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+}
+
+.swagger-ui .opblock .opblock-section-header {
+    background-color: #333;
+}
+
+.swagger-ui .opblock-control-arrow {
+    fill: #e0e0e0;
+}
+
+.swagger-ui,
+.swagger-ui .btn,
+.swagger-ui .info p,
+.swagger-ui .info .title,
+.swagger-ui .response-col_links,
+.swagger-ui .responses-inner h4,
+.swagger-ui .responses-inner h5,
+.swagger-ui a.nostyle, .swagger-ui a.nostyle:visited,
+.swagger-ui .opblock .opblock-summary-description,
+.swagger-ui .opblock-description-wrapper p,
+.swagger-ui .response-col_status,
+.swagger-ui table thead tr td,
+.swagger-ui .opblock .opblock-section-header h4 {
+    color: #e0e0e0 !important;
+}
+
+.swagger-ui .info .title small pre,
+.swagger-ui .opblock .opblock-summary-method,
+.swagger-ui .btn.execute {
+    color: #1f1f1f !important;
+}
