@@ -1,11 +1,19 @@
 const swaggerDefinition = {
     openapi: '3.0.0',
     info: {
-        title: 'EduRol server API',
+        title: 'Rol.04 server API',
         version: '1.0.0',
         description: 'Dokumentacja API',
     },
     tags: [
+        {
+            name: 'test',
+            description: 'Tylko do testowania',
+        },
+        {
+            name: 'secure',
+            description: 'Buduje dostęp do komunikacji klienta z serwerem',
+        },
         {
             name: 'basic',
             description: 'Podstawowe',
@@ -16,7 +24,7 @@ const swaggerDefinition = {
         },
         {
             name: 'statistics',
-            description: 'statystyki rozwiązywania testów',
+            description: 'Statystyki rozwiązywania testów',
         },
     ],
     withCredentials: true,

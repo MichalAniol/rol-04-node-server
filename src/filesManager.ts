@@ -1,4 +1,4 @@
-const fm = (function () { // filesManager
+namespace fm { // filesManager
     let splitted = __dirname.split('\\');
     let projectPath = '';
     splitted.forEach((e, i) => i < splitted.length - 1 ? projectPath += e + '/' : null);
@@ -28,12 +28,12 @@ const fm = (function () { // filesManager
         return data.toString();
     }
 
-    const loadData = (name: string) => {
+    export const loadData = (name: string) => {
         const filePath = dataPath + '/' + name
         load(name, filePath)
     }
 
-    const loadImage = (name: string) => {
+    export const loadImage = (name: string) => {
         const filePath = imagePath + '/' + name
         load(name, filePath)
     }
@@ -86,7 +86,7 @@ const fm = (function () { // filesManager
         await mkdir(path, { recursive: true })
     }
 
-    const createUserFolder = async (id: string) => {
+    export const createUserFolder = async (id: string) => {
         await createFolder(id, usersPath)
     }
 
@@ -98,16 +98,9 @@ const fm = (function () { // filesManager
         }
     }
 
-    const checkUserFolderExist = async (id: string) => await folderExists(usersPath + '/' + id)
+    export const checkUserFolderExist = async (id: string) => await folderExists(usersPath + '/' + id)
 
     const save = (name: string, filePath: string, data: any) => fs.writeFileSync(filePath, data)
-
-    return {
-        loadData,
-        loadImage,
-        createUserFolder,
-        checkUserFolderExist,
-    }
-}())
+}
 
 

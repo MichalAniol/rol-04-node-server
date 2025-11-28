@@ -5,4 +5,4 @@ prod/*
 .env.dev
 .env.prod
 
-*.pem
+prod/*.pem
