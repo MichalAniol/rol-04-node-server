@@ -16,7 +16,7 @@ namespace app {
         core.app.use(xss())
         core.app.use(cookieParser())
 
-        const csrfProtection = csurf({
+        core.csrfProtection = csurf({
             cookie: {
                 // UWAGA: nazwę cookie, którą przeglądarka ma „widzieć” ustawiamy jako XSRF-TOKEN
                 // ale csurf sam może trzymać wewnętrzny sekret w innym cookie — dlatego lepiej
@@ -26,22 +26,30 @@ namespace app {
                 secure: true,
                 sameSite: 'none'
             },
-            value: (req: RequestT) => {
-                // sprawdzamy kilka miejsc — header ma priorytet (axios wrzuca tu X-XSRF-TOKEN)
-                return (req.headers['x-xsrf-token'] as string)
-                    || (req.cookies && req.cookies['XSRF-TOKEN'])
-                    || (req.body && req.body._csrf)
-                    || '';
-            }
+            // value: (req: RequestT) => {
+            //     // sprawdzamy kilka miejsc — header ma priorytet (axios wrzuca tu X-XSRF-TOKEN)
+            //     return (req.headers['x-xsrf-token'] as string)
+            //         || (req.cookies && req.cookies['XSRF-TOKEN'])
+            //         || (req.body && req.body._csrf)
+            //         || '';
+            // }
         });
-        core.app.use(csrfProtection);
+        core.app.use(core.csrfProtection)
 
         // CSRF error handler
         const csrfErrorHandler = (err: any, req: RequestT, res: ResponseT, next: NextFunctionT) => {
             const cookieHeader = req.headers.cookie
-            const cookies = cookie.parse(cookieHeader)
-            console.log('>>>>> cookies:', 'background: #ffcc00; color: #003300', cookies)
 
+            if (cookieHeader) {
+                console.log('%c cookieHeader:', 'background: #ffcc00; color: #003300', cookieHeader)
+
+            }
+            else if (typeof cookieHeader === 'string') {
+                const cookies = cookie.parse(cookieHeader)
+                console.log('>>>>> cookies:', 'background: #ffcc00; color: #003300', cookies)
+            } else {
+                console.log('--->>> no cookies <<<---')
+            }
 
             if (err.code === 'EBADCSRFTOKEN') {
                 res.status(403).json({
@@ -78,15 +86,15 @@ namespace app {
     export const startServer = () => {
         const PORT = 3331 // 3306
 
-        const key = fs.readFileSync('./prod/192.168.0.109-key.pem')
-        const cert = fs.readFileSync('./prod/192.168.0.109.pem')
+        const key = fs.readFileSync('./prod/192.168.1.109+1-key.pem')
+        const cert = fs.readFileSync('./prod/192.168.1.109+1.pem')
 
         // core.server = core.app.listen(PORT, () => {
         //     console.log(`Serwer działa na porcie ${PORT}`)
         // })
 
-        https.createServer({ key, cert }, core.app).listen(PORT, () => {
-            console.log(`HTTPS server działa na https://localhost:${PORT}`)
+        https.createServer({ key, cert }, core.app).listen(PORT, '192.168.1.109', () => {
+            console.log(`HTTPS server działa na https://192.168.1.109:${PORT}`)
         })
 
         swagger(PORT)

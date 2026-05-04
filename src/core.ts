@@ -27,6 +27,7 @@ namespace core {
     export let serverPrefix: CoreT["serverPrefix"] = '/rol04/api/';
     export let app: CoreT["app"] = null;
     export let server: CoreT["server"] = null;
+    export let csrfProtection: CoreT["csrfProtection"] = null;
 }
 
 type CoreT = {
@@ -34,5 +35,6 @@ type CoreT = {
     serverPrefix: string,
     app: Application | null,
     server: Server | null,
+    csrfProtection: any | null,
     responseCommand: typeof core.responseCommand
 }

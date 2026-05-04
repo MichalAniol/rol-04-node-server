@@ -27,7 +27,7 @@ namespace user {
         *       200:
         *         description: Został utworzony
         */
-        core.app.post(url.user.set, limiter, (req: RequestT, res: ResponseT) => {
+        core.app.post(url.user.set, core.csrfProtection, limiter, (req: RequestT, res: ResponseT) => {
             const userId = utils.idGenerator.getUserId()
 
             fm.createUserFolder(userId)
