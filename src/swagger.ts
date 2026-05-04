@@ -16,7 +16,7 @@ const swagger = (port: number) => {
     // Dark mode CSS
     core.app.use('/swagger-dark.css', express.static('swagger-dark.css'));
 
-    console.log(`SWAGGER: http://localhost:${port}${core.serverPrefix}/api-docs`)
+    console.log(`SWAGGER: https://192.168.1.109:${port}${core.serverPrefix}/api-docs`)
 
     const swaggerUrl = `${core.serverPrefix}/api-docs`
 

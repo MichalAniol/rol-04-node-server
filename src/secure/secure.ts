@@ -22,7 +22,7 @@ namespace secure {
 
             const tokenCsrf = req.csrfToken()
             res.cookie('XSRF-TOKEN', tokenCsrf, {
-                httpOnly: false,
+                // httpOnly: false,
                 sameSite: 'none',
                 secure: true
             })

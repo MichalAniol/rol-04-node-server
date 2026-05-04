@@ -7,18 +7,23 @@ namespace utils {
 
         const verifyMahakalaToken = (req: RequestT, res: ResponseT) => {
             const cookieHeader = req.headers.cookie
-            const cookies = cookie.parse(cookieHeader)
 
-            const mahakalaToken = cookies['mahakala-token']
-            console.log('%c mahakalaKey:', 'background: #ffcc00; color: #003300', mahakalaToken)
+            let mahakalaToken
+            if (cookieHeader && typeof cookieHeader === 'string') {
+                const cookies = cookie.parse(cookieHeader)
 
-            if (!mahakalaToken) {
-                res.status(401).json({
-                    message: 'Brak mahakala token',
-                    command: core.responseCommand.secure.noMahakala,
-                })
-                return false
+                mahakalaToken = cookies['mahakala-token']
+                console.log('%c mahakalaKey:', 'background: #ffcc00; color: #003300', mahakalaToken)
+
+                if (!mahakalaToken) {
+                    res.status(401).json({
+                        message: 'Brak mahakala token',
+                        command: core.responseCommand.secure.noMahakala,
+                    })
+                    return false
+                }
             }
+
 
             try {
                 jwt.verify(mahakalaToken, MAHAKALA_SECRET)
