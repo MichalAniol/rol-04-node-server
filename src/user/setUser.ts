@@ -4,7 +4,7 @@ namespace user {
         // Rate limiting
         const limiter = rateLimit({
             windowMs: 60 * 60 * 1000 * 24, // 24 godziny
-            max: 100, // max 100 próby na IP
+            max: 1000, // max 100 próby na IP
             message: {
                 message: 'Zbyt wiele rejestracji z tego IP. Spróbuj za 24 godziny.',
                 command: core.responseCommand.main.ddosId,
@@ -43,6 +43,7 @@ namespace user {
             res.json({
                 message: 'Stworzono uzytkownika',
                 command: core.responseCommand.user.set,
+                userId: userId
             })
         })
     }

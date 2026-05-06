@@ -39,6 +39,7 @@ namespace secure {
                 res.json({
                     message: 'U can start aping',
                     command: core.responseCommand.secure.go,
+                    userId: userId,
                     // mahakalaToken,
                     // tokenCsrf
                 })

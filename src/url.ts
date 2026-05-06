@@ -18,4 +18,11 @@ namespace url {
         getQr: `${core.serverPrefix}get-user-qr-code`,
         setQr: `${core.serverPrefix}set-user-by-qr-code`,
     }
+
+    export const data = {
+        version: `${core.serverPrefix}get-version`,
+        config: `${core.serverPrefix}get-config`,
+        questions: `${core.serverPrefix}get-questions`,
+        images: `${core.serverPrefix}get-images`,
+    }
 }

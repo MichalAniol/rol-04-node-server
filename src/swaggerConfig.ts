@@ -23,6 +23,10 @@ const swaggerDefinition = {
             description: 'Tworzenie, weryfikowanie i odtwarzanie postępów uzytkownika',
         },
         {
+            name: 'data',
+            description: 'Dane do wyświetlania w aplikacji',
+        },
+        {
             name: 'statistics',
             description: 'Statystyki rozwiązywania testów',
         },

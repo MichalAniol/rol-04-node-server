@@ -11,7 +11,20 @@ namespace utils {
                 .digest('hex')
         }
 
-        const verify = (clientToken: string, secret: string) => {
+        const get = (req: RequestT, res: ResponseT) => {
+            const cookieHeader = req.headers.cookie
+
+            if (cookieHeader && typeof cookieHeader === 'string') {
+                const cookies = cookie.parse(cookieHeader)
+                const userId = cookies['basic-token']
+
+                return userId
+            }
+
+            return null
+        }
+
+        const verify = (clientToken: string) => {
             const now = getNowTimestamp()
             const validTokens = [
                 generateToken(now),
@@ -22,6 +35,7 @@ namespace utils {
 
         return {
             generate: () => generateToken(getNowTimestamp()),
+            get,
             verify,
         }
     }())
