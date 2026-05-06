@@ -37,6 +37,7 @@
     "secure/secure.ts",
     "secure/secureTest.ts",
     "secure/index.ts",
+    "data/getVersion.ts",
     "data/getConfig.ts",
     "data/getQuestion.ts",
     "data/getImg.ts",

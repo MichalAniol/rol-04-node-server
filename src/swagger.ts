@@ -4,6 +4,7 @@ const swagger = (port: number) => {
         './src/test/*.ts',
         './src/secure/*.ts',
         './src/user/*.ts',
+        './src/data/*.ts',
     ] as const;
 
     const swaggerOptions = {

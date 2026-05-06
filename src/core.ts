@@ -20,6 +20,10 @@ namespace core {
             no: 'noUser',
             noId: 'noId',
             qr: 'qr',
+        },
+        data: {
+            upToDateVersion: 'upToDateVersion',
+            oldVersion: 'oldVersion',
         }
     }
 

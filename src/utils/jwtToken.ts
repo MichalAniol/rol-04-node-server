@@ -13,7 +13,7 @@ namespace utils {
                 const cookies = cookie.parse(cookieHeader)
 
                 mahakalaToken = cookies['mahakala-token']
-                console.log('%c mahakalaKey:', 'background: #ffcc00; color: #003300', mahakalaToken)
+                // console.log('%c mahakalaKey:', 'background: #ffcc00; color: #003300', mahakalaToken)
 
                 if (!mahakalaToken) {
                     res.status(401).json({

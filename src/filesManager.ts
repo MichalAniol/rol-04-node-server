@@ -12,7 +12,7 @@ namespace fm { // filesManager
     const usersPath = projectPath + 'users'
 
     const load = (name: string, filePath: string) => {
-        console.log('%c filePath:', 'background: #ffcc00; color: #003300', filePath)
+        // console.log('%c filePath:', 'background: #ffcc00; color: #003300', filePath)
         let data = null;
 
         try {
@@ -29,13 +29,13 @@ namespace fm { // filesManager
     }
 
     export const loadData = (name: string) => {
-        const filePath = dataPath + '/' + name
-        load(name, filePath)
+        const filePath = `${dataPath}/${name}.json`
+        return JSON.parse(load(name, filePath))
     }
 
     export const loadImage = (name: string) => {
-        const filePath = imagePath + '/' + name
-        load(name, filePath)
+        const filePath = `${imagePath}/${name}.png`
+        return load(name, filePath)
     }
 
     const loadByPat = (path: string) => {
