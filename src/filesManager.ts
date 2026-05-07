@@ -8,7 +8,7 @@ namespace fm { // filesManager
     // const path_in = projectPath + '/input'
 
     const dataPath = projectPath + 'data'
-    const imagePath = projectPath + 'img'
+    const imagePath = dataPath + '/img'
     const usersPath = projectPath + 'users'
 
     const load = (name: string, filePath: string) => {
@@ -33,9 +33,21 @@ namespace fm { // filesManager
         return JSON.parse(load(name, filePath))
     }
 
+    export const imageExists = (name: string) => {
+        const filePath = `${imagePath}/${name}.png`
+        console.log('%c filePath:', 'background: #ffcc00; color: #003300', filePath)
+        return fs.existsSync(filePath);
+    }
+
     export const loadImage = (name: string) => {
         const filePath = `${imagePath}/${name}.png`
-        return load(name, filePath)
+        console.log('%c filePath:', 'background: #ffcc00; color: #003300', filePath)
+
+        if (!fs.existsSync(filePath)) {
+            return null;
+        }
+
+        return fs.readFileSync(filePath);
     }
 
     const loadByPat = (path: string) => {
