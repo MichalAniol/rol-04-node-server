@@ -16,6 +16,7 @@ namespace data {
 
         core.app.get(url.data.config, core.csrfProtection, async (req: RequestT, res: ResponseT) => {
             const verification = utils.jwtToken.verify(req, res)
+            console.log('%c verification:', 'background: #ffcc00; color: #003300', verification)
 
             if (verification) {
                 const config = await fm.loadData('config')

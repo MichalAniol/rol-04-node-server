@@ -24,6 +24,7 @@ namespace core {
         data: {
             upToDateVersion: 'upToDateVersion',
             oldVersion: 'oldVersion',
+            noImage: 'noImage'
         }
     }
 
